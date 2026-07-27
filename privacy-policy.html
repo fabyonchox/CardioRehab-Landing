@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - CardioRehab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #8a9fc4; /* Color de texto secundario Cyber-Glass */
+            background-color: #070a10; /* Fondo principal Cyber-Glass */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        h1, h2 {
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 40px;
+            color: #00e5ff; /* Acento cian neón */
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
+        }
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        strong {
+            color: #ffffff;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #00e5ff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        .highlight-box {
+            background: rgba(0, 229, 255, 0.05);
+            border-left: 4px solid #00e5ff;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Política de Privacidad de CardioRehab</h1>
+    <p><strong>Última actualización:</strong> 22 de Julio de 2026</p>
+
+    <p>En <strong>CardioRehab</strong>, el respeto por la privacidad y la confidencialidad de los datos clínicos es nuestra máxima prioridad. Esta Política de Privacidad explica cómo recopilamos, usamos, protegemos y manejamos la información dentro de nuestra aplicación móvil (en adelante, la "Aplicación") y los servicios asociados en la nube.</p>
+
+    <h2>1. Recopilación y Uso de la Información</h2>
+    <p>La Aplicación está diseñada para ser utilizada por profesionales de la salud (kinesiólogos, cardiólogos y terapeutas). Recopilamos los siguientes tipos de datos:</p>
+    <ul>
+        <li><strong>Información de la Cuenta:</strong> Dirección de correo electrónico y contraseña creados al registrarse en la Aplicación. Estos datos se procesan a través de <strong>Firebase Authentication</strong> únicamente para verificar la identidad del especialista y dar acceso seguro a su cuenta.</li>
+        <li><strong>Datos Clínicos de Pacientes:</strong> Métricas cardiovasculares, resultados de pruebas físicas (como STS 1-Min, DASI, CVG-5) e información de sesiones de rehabilitación registradas por el especialista.</li>
+    </ul>
+
+    <h2>2. Sincronización y Seguridad de los Datos (Cifrado)</h2>
+    <div class="highlight-box">
+        <p><strong>Sincronización en la Nube (Firebase Sync):</strong> La Aplicación ofrece un servicio de respaldo automático en la nube. Los datos de tus pacientes y sesiones se sincronizan de forma segura en la base de datos de <strong>Firebase Firestore</strong> bajo el perfil exclusivo del especialista autenticado.</p>
+    </div>
+    <ul>
+        <li><strong>Cifrado Local:</strong> En el dispositivo móvil, todos los datos se resguardan bajo una base de datos local encriptada con <strong>SQLCipher de 256 bits</strong>.</li>
+        <li><strong>Cifrado en Tránsito y Reposo:</strong> Toda la comunicación entre la Aplicación y los servidores de Firebase se encripta mediante canales seguros (HTTPS/TLS) y se almacena cifrada en reposo en la infraestructura de Google Cloud.</li>
+        <li><strong>Privacidad de Datos:</strong> Nosotros (los desarrolladores de CardioRehab) <strong>no tenemos acceso, no recopilamos y no compartimos</strong> los registros médicos de tus pacientes. Los datos de la nube pertenecen exclusivamente a tu cuenta de especialista.</li>
+    </ul>
+
+    <h2>3. Compartir Información a Terceros</h2>
+    <p>CardioRehab <strong>no vende, no alquila y no comparte</strong> bajo ninguna circunstancia los datos clínicos con terceros, agencias de publicidad o empresas de análisis de datos. La Aplicación no incluye rastreadores ni anuncios publicitarios de ningún tipo.</p>
+
+    <h2>4. Permisos de la Aplicación</h2>
+    <p>Para su correcto funcionamiento, la Aplicación solicita los siguientes permisos en su dispositivo:</p>
+    <ul>
+        <li><strong>Almacenamiento / Archivos:</strong> Necesario para exportar informes en formatos PDF, Word (.docx) o la Súper Matriz Excel, guardándolos en el almacenamiento local del dispositivo a petición del usuario.</li>
+        <li><strong>Biometría:</strong> Permite proteger el acceso local mediante huella dactilar o reconocimiento facial, asegurando que solo el profesional autorizado pueda abrir la app.</li>
+    </ul>
+
+    <h2>5. Retención y Eliminación de Datos (Requisito de Google Play)</h2>
+    <p>El especialista puede decidir cuándo eliminar los datos clínicos de sus pacientes desde la interfaz de la Aplicación. Adicionalmente, de conformidad con las políticas de Google Play, proporcionamos un método para solicitar la eliminación de la cuenta del especialista.</p>
+    <p>Para solicitar la eliminación definitiva de tu cuenta y todos los datos asociados en la nube de Firebase, puedes escribirnos directamente a nuestro correo de soporte: <a href="mailto:soporte@cardiorehab.cl">soporte@cardiorehab.cl</a>. La cuenta y los datos de respaldo se borrarán en un plazo máximo de 72 horas hábiles.</p>
+
+    <h2>6. Cambios a esta Política de Privacidad</h2>
+    <p>Podemos actualizar nuestra Política de Privacidad para reflejar mejoras en la Aplicación o cambios normativos. Te notificaremos sobre cualquier cambio publicando la nueva versión en este sitio web.</p>
+
+    <h2>7. Contacto</h2>
+    <p>Si tienes preguntas o sugerencias respecto a nuestra Política de Privacidad, puedes contactarnos en: <a href="mailto:soporte@cardiorehab.cl">soporte@cardiorehab.cl</a>.</p>
+
+    <p style="margin-top: 40px; text-align: center;"><a href="index.html">&larr; Volver al Inicio</a></p>
+</body>
+</html>

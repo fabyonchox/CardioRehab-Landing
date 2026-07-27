@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioRehab - Soporte de Decisión y Rehabilitación Cardiovascular</title>
+    
+    <!-- Meta tags SEO para LATAM -->
+    <meta name="description" content="Plataforma de soporte de decisión clínica y automatización de reportes para kinesiólogos, cardiólogos y centros de rehabilitación cardiovascular en Latinoamérica.">
+    <meta name="keywords" content="rehabilitación cardiovascular, kinesiología cardíaca, prueba de caminata de 6 minutos, TM6M, fórmula de Karvonen, betabloqueantes, AACVPR, sarcopenia EWGSOP2, reporte clínico digital, software de kinesiología, LATAM">
+    <meta name="author" content="CardioRehab Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (para compartir en redes sociales como LinkedIn e Instagram) -->
+    <meta property="og:title" content="CardioRehab - Software para Rehabilitación Cardiovascular">
+    <meta property="og:description" content="Automatiza reportes en Word, calcula zonas de entrenamiento de forma precisa y optimiza tu tiempo clínico con evidencia automatizada.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cardiorehab.cl">
+    <meta property="og:image" content="images/bento_clinical.png">
+
+    <!-- Fuentes modernas de tecnología médica -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="dark-theme">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">CardioRehab<span class="pulse-dot"></span></div>
+        <div class="nav-links">
+            <a href="#features">Características</a>
+            <a href="#clinical">Módulos Clínicos</a>
+            <a href="#workflow">¿Cómo Funciona?</a>
+            <a href="#evidence">Evidencia Científica</a>
+            <a href="#gallery">Galería</a>
+            <a href="#download" class="btn-primary-small">Descargar App <i class="ph ph-arrow-down"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-prisma">
+        <div class="hero-bg-wrapper">
+            <img src="images/hero_cardio.png" alt="CardioRehab Telemetría y Rehabilitación Cardiovascular" class="hero-bg-img moving-bg">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1 class="prisma-title">Cardio<br><span class="neon-glow-text">Rehab</span></h1>
+                <div class="hero-text-box">
+                    <p class="hero-tagline">LA SUITE CLÍNICA INTELIGENTE PARA LATINOAMÉRICA</p>
+                    <p>La plataforma móvil líder en soporte de decisión clínica. Diseñada especialmente para kinesiólogos, fisioterapeutas y cardiólogos dedicados a la rehabilitación cardiovascular.</p>
+                    <div class="hero-badges">
+                        <span class="badge"><i class="ph ph-shield-check"></i> Privacidad Local (Room DB)</span>
+                        <span class="badge"><i class="ph ph-heartbeat"></i> Fórmulas Validadas</span>
+                    </div>
+                    <div class="hero-ctas">
+                        <a href="#download" class="btn-prisma">Comenzar Gratis <i class="ph ph-arrow-right"></i></a>
+                        <a href="#workflow" class="btn-secondary-link">Ver demostración</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bento Box Features -->
+    <section id="features" class="bento-section">
+        <span class="section-tagline">TECNOLOGÍA CLÍNICA AVANZADA</span>
+        <h2 class="section-title">Evidencia científica en tu bolsillo. Menos papeleo, más precisión.</h2>
+        <div class="bento-grid">
+            <!-- Interfaz Cyber-Glass -->
+            <div class="bento-card image-card slide-up">
+                <div class="card-image-wrapper">
+                     <img src="images/bento_clinical.png" class="moving-bg" alt="Interfaz de Monitoreo CardioRehab">
+                </div>
+                <div class="card-content">
+                    <span class="eyebrow">DISEÑO CYBER-GLASS</span>
+                    <h3>Interfaz Médica de Alta Fidelidad.</h3>
+                    <p>Diseño en modo oscuro optimizado para ambientes clínicos. Evita el cansancio visual y facilita la lectura rápida de telemetría.</p>
+                </div>
+            </div>
+            
+            <!-- Reportes Word -->
+            <div class="bento-card text-card slide-up">
+                <span class="card-number">01</span>
+                <h3>Informes DOCX Editables.</h3>
+                <p>Genera informes de ingreso, evolución o alta directamente en Word (OpenXML). Añade el logo de tu propia consulta o institución médica de forma sencilla.</p>
+                <ul class="check-list">
+                    <li><i class="ph ph-check-circle"></i> Exportación nativa superveloz</li>
+                    <li><i class="ph ph-check-circle"></i> Totalmente editable en Microsoft Word</li>
+                    <li><i class="ph ph-check-circle"></i> Comparte directo por WhatsApp/Email</li>
+                </ul>
+            </div>
+
+            <!-- Privacidad Offline-First -->
+            <div class="bento-card text-card slide-up">
+                <span class="card-number">02</span>
+                <h3>Privacidad Local-First.</h3>
+                <p>Todos los datos de tus pacientes permanecen seguros en la base de datos local encriptada (SQLCipher). Sin servidores externos rastreando datos sensibles.</p>
+                <ul class="check-list">
+                    <li><i class="ph ph-lock-keyhole"></i> Base de datos Room encriptada</li>
+                    <li><i class="ph ph-cloud-slash"></i> Funciona 100% sin internet</li>
+                    <li><i class="ph ph-shield-check"></i> Cumplimiento ético-clínico</li>
+                </ul>
+            </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section id="demo" class="video-section slide-up">
+        <span class="section-tagline">DEMOSTRACIÓN EN VIVO</span>
+        <h2 class="section-title">Mira cómo funciona CardioRehab en la práctica.</h2>
+        <div class="video-container-wrapper">
+            <div class="video-player-card">
+                <!-- HTML5 Video Player local. Reemplaza "images/demo_app.mp4" por tu archivo real de video. -->
+                <!-- O si prefieres YouTube, puedes reemplazar todo este tag <video> por un <iframe>. -->
+                <video class="demo-video" controls poster="images/hero_cardio.png">
+                    <source src="images/demo_app.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video HTML5.
+                </video>
+                <div class="video-overlay-glow"></div>
+            </div>
+            
+            <div class="video-features-info">
+                <div class="info-item">
+                    <i class="ph ph-cursor-click"></i>
+                    <div>
+                        <h4>Interfaz Táctil Agilizada</h4>
+                        <p>Diseñada para que el kinesiólogo registre métricas clínicas en tiempo real sin desviar la atención del paciente.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="ph ph-lightning"></i>
+                    <div>
+                        <h4>Cálculos Fisiológicos Instantáneos</h4>
+                        <p>Resultados normativos automáticos. Olvídate de buscar ecuaciones de Enright o tablas de dinamometría.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="ph ph-share-network"></i>
+                    <div>
+                        <h4>Envío de Reportes en 1 Clic</h4>
+                        <p>Exporta al instante un documento de Word (.docx) formal y compártelo directo a médicos derivadores por WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Módulos Clínicos Avanzados -->
+    <section id="clinical" class="list-section">
+        <span class="section-tagline">MÓDULOS DE EVALUACIÓN Y CÁLCULO</span>
+        <h2 class="section-title">Estratificación de riesgo y prescripción de ejercicio guiada.</h2>
+        
+        <div class="list-container">
+            <!-- TM6M -->
+            <div class="list-item slide-up">
+                <div class="list-info">
+                    <h3>TM6M + Enright</h3>
+                    <span class="list-meta">AERÓBICO · 6 MINUTOS</span>
+                </div>
+                <div class="list-desc">
+                    <p>Test de Marcha de 6 Minutos. Cálculo automatizado del porcentaje predicho según las ecuaciones de referencia de Enright adaptadas a la estatura, peso, edad y sexo del paciente.</p>
+                    <ul class="inline-dots">
+                        <li><i class="ph ph-chart-bar"></i> Escala de Borg inicial/final</li>
+                        <li><i class="ph ph-trend-up"></i> Delta Hemodinámico</li>
+                        <li><i class="ph ph-heartbeat"></i> Velocidad media y METs</li>
+                    </ul>
+                </div>
+                <div class="list-action">
+                    <span class="module-status">Integrado</span>
+                </div>
+            </div>
+
+            <!-- Karvonen con Betabloqueantes -->
+            <div class="list-item slide-up">
+                <div class="list-info">
+                    <h3>Karvonen BB</h3>
+                    <span class="list-meta">PRESCRIPCIÓN DE EJERCICIO</span>
+                </div>
+                <div class="list-desc">
+                    <p>Cálculo de la frecuencia cardíaca de entrenamiento ajustada. Aplica de manera automática la corrección fisiológica para pacientes bajo terapia con betabloqueantes (fórmula especializada <code>164 - (0.7 * edad)</code>).</p>
+                    <ul class="inline-dots">
+                        <li><i class="ph ph-activity"></i> Zonas de entrenamiento</li>
+                        <li><i class="ph ph-warning-circle"></i> Ajuste por fármacos</li>
+                        <li><i class="ph ph-shield-check"></i> Rangos de seguridad</li>
+                    </ul>
+                </div>
+                <div class="list-action">
+                    <span class="module-status">Integrado</span>
+                </div>
+            </div>
+
+            <!-- Estratificación AACVPR -->
+            <div class="list-item slide-up">
+                <div class="list-info">
+                    <h3>AACVPR</h3>
+                    <span class="list-meta">ESTRATIFICACIÓN DE RIESGO</span>
+                </div>
+                <div class="list-desc">
+                    <p>Clasificación del nivel de riesgo cardiovascular (Bajo, Moderado o Alto) según las directrices de la American Association of Cardiovascular and Pulmonary Rehabilitation, facilitando la toma de decisiones clínicas.</p>
+                    <ul class="inline-dots">
+                        <li><i class="ph ph-info"></i> Comorbilidades y FEVI</li>
+                        <li><i class="ph ph-arrows-merge"></i> Algoritmo predictivo</li>
+                        <li><i class="ph ph-file-text"></i> Justificación de riesgo</li>
+                    </ul>
+                </div>
+                <div class="list-action">
+                    <span class="module-status">Integrado</span>
+                </div>
+            </div>
+
+            <!-- Handgrip EWGSOP2 -->
+            <div class="list-item slide-up">
+                <div class="list-info">
+                    <h3>Handgrip EWGSOP2</h3>
+                    <span class="list-meta">FUERZA · DINAMOMETRÍA</span>
+                </div>
+                <div class="list-desc">
+                    <p>Evaluación de la fuerza de prensión manual. Interpretación y clasificación automatizada de la fuerza muscular en base a los puntos de corte del Consenso Europeo sobre Sarcopenia (EWGSOP2).</p>
+                    <ul class="inline-dots">
+                        <li><i class="ph ph-gauge"></i> Puntos de corte por género</li>
+                        <li><i class="ph ph-user-check"></i> Clasificación de fuerza baja</li>
+                        <li><i class="ph ph-layout"></i> Integrado con test SARC-F</li>
+                    </ul>
+                </div>
+                <div class="list-action">
+                    <span class="module-status">Integrado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section (3 Pasos) -->
+    <section id="workflow" class="workflow-section">
+        <span class="section-tagline">FLUJO DE TRABAJO CLÍNICO</span>
+        <h2 class="section-title">Optimiza tu consulta en 3 simples pasos.</h2>
+        
+        <div class="workflow-grid">
+            <div class="workflow-card slide-up">
+                <div class="workflow-icon-box">
+                    <i class="ph ph-user-plus"></i>
+                </div>
+                <h3>1. Ingreso del Paciente</h3>
+                <p>Registra al paciente, añade sus comorbilidades e ingresa el perfil clínico general en la base de datos segura de tu dispositivo.</p>
+            </div>
+            
+            <div class="workflow-card slide-up">
+                <div class="workflow-icon-box">
+                    <i class="ph ph-heartbeat"></i>
+                </div>
+                <h3>2. Evaluaciones Fisiológicas</h3>
+                <p>Ejecuta las pruebas (TM6M, STS, Dinamometría) e ingresa las respuestas hemodinámicas. La app calcula los deltas y predichos al instante.</p>
+            </div>
+            
+            <div class="workflow-card slide-up">
+                <div class="workflow-icon-box">
+                    <i class="ph ph-file-doc"></i>
+                </div>
+                <h3>3. Exporta tu Reporte DOCX</h3>
+                <p>Genera el reporte profesional editable en Word, adjúntale el logo de tu centro y envíaselo al cardiólogo tratante en un solo clic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scientific Evidence Section -->
+    <section id="evidence" class="evidence-section">
+        <span class="section-tagline">VALIDACIÓN CLÍNICA Y CIENTÍFICA</span>
+        <h2 class="section-title">Respaldado por la Evidencia y Consensos Internacionales</h2>
+        <p class="section-subtitle">CardioRehab no es solo un registro; es una herramienta de soporte que aplica los estándares y fórmulas validadas por las principales asociaciones de kinesiología y cardiología del mundo.</p>
+        
+        <div class="evidence-grid">
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-activity"></i></div>
+                <h3>Ecuaciones de Enright & Sherrill (1998)</h3>
+                <p class="evidence-standard">Estándar para Test de Marcha de 6 Minutos (TM6M)</p>
+                <p class="evidence-desc">Calcula el porcentaje de distancia predicha teórico para adultos mayores y sanos, ajustado automáticamente por sexo, edad, peso y estatura, según la American Thoracic Society (ATS).</p>
+                <span class="evidence-tag">TM6M Predicho</span>
+            </div>
+
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-pill"></i></div>
+                <h3>Fórmula de Karvonen Modificada</h3>
+                <p class="evidence-standard">Prescripción de Ejercicio con Betabloqueantes</p>
+                <p class="evidence-desc">Ajusta de manera segura la Frecuencia Cardíaca de Entrenamiento en pacientes coronarios bajo fármacos betabloqueantes utilizando la ecuación clínica correctora (fórmula de Brawner: 164 - (0.7 * edad)).</p>
+                <span class="evidence-tag">Fisiología</span>
+            </div>
+
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-warning"></i></div>
+                <h3>Criterios AACVPR (2013)</h3>
+                <p class="evidence-standard">Estratificación de Riesgo Cardiovascular</p>
+                <p class="evidence-desc">Clasifica el riesgo de eventos durante el ejercicio (Bajo, Moderado o Alto) basándose en la FEVI, presencia de arritmias, síntomas y capacidad funcional (METs) según la American Association of Cardiovascular and Pulmonary Rehabilitation.</p>
+                <span class="evidence-tag">Cardiología</span>
+            </div>
+
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-gauge"></i></div>
+                <h3>Escala de Borg (RPE 6-20)</h3>
+                <p class="evidence-standard">Percepción Subjetiva del Esfuerzo durante el Ejercicio</p>
+                <p class="evidence-desc">Registra la intensidad percibida por el paciente en cada sesión de ejercicio usando la escala validada de Borg (6-20). Permite ajustar la carga de trabajo en tiempo real y correlacionar el esfuerzo subjetivo con las zonas de frecuencia cardíaca objetivo.</p>
+                <span class="evidence-tag">Esfuerzo Percibido</span>
+            </div>
+
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-heartbeat"></i></div>
+                <h3>Monitoreo de Respuesta Hemodinámica</h3>
+                <p class="evidence-standard">Delta de Pulso, FC Reposo/Peak y Presión Arterial</p>
+                <p class="evidence-desc">Registra y compara automáticamente la frecuencia cardíaca en reposo, peak y recuperación, calculando el delta de pulso y la respuesta presora al ejercicio para evaluar la adaptación cardiovascular sesión a sesión.</p>
+                <span class="evidence-tag">Telemetría Clínica</span>
+            </div>
+
+            <div class="evidence-card slide-up">
+                <div class="evidence-icon"><i class="ph ph-lightning"></i></div>
+                <h3>Cálculo de METs y Capacidad Funcional</h3>
+                <p class="evidence-standard">Estimación de VO2 y Equivalente Metabólico</p>
+                <p class="evidence-desc">Estima la capacidad funcional del paciente en METs a partir de la distancia recorrida en el TM6M y parámetros hemodinámicos, permitiendo clasificar el nivel de aptitud cardiovascular y prescribir intensidades de ejercicio seguras.</p>
+                <span class="evidence-tag">Capacidad Funcional</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <span class="section-tagline">GALERÍA DE CAPTURAS</span>
+        <h2 class="section-title">Explora la Interfaz de CardioRehab</h2>
+        <p class="section-subtitle">Visualiza cómo se registran las métricas, se calculan las fórmulas y se estructuran los reportes de evolución clínica en tiempo real.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM.jpeg', 'Dashboard Principal de Telemetría')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM.jpeg" alt="Dashboard Principal">
+                <div class="gallery-info">
+                    <h4>Dashboard Principal</h4>
+                    <p>Acceso rápido a las tareas diarias y evolución.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (1).jpeg', 'Monitoreo del Esfuerzo Físico')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (1).jpeg" alt="Esfuerzo Físico">
+                <div class="gallery-info">
+                    <h4>Esfuerzo Físico</h4>
+                    <p>Ingreso de frecuencia cardíaca y Borg.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (2).jpeg', 'Zonas de Entrenamiento')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (2).jpeg" alt="Zonas Fisiológicas">
+                <div class="gallery-info">
+                    <h4>Zonas de Entrenamiento</h4>
+                    <p>Karvonen y Karvonen con betabloqueantes.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM (3).jpeg', 'Evolución Gráfica e Indicadores')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM (3).jpeg" alt="Evolución Gráfica">
+                <div class="gallery-info">
+                    <h4>Evolución Clínica</h4>
+                    <p>Gráficos interactivos de capacidad funcional.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM.jpeg', 'Cálculos de Fórmulas Automáticos')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM.jpeg" alt="Fórmulas Clínicas">
+                <div class="gallery-info">
+                    <h4>Cálculo de Predichos</h4>
+                    <p>Resultados normativos automáticos en segundos.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM (1).jpeg', 'Ficha Clínica Completa')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.05 PM (1).jpeg" alt="Ficha Clínica">
+                <div class="gallery-info">
+                    <h4>Ficha del Paciente</h4>
+                    <p>Historial médico, anamnesis y comorbilidades.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (5).jpeg', 'Reportes de Evolución DOCX')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.30.04 PM (5).jpeg" alt="Exportación Word">
+                <div class="gallery-info">
+                    <h4>Reportes DOCX</h4>
+                    <p>Exportación de informes editables en 1 clic.</p>
+                </div>
+            </div>
+            <div class="gallery-item slide-up" onclick="openLightbox('images/imagenes app/WhatsApp Image 2026-06-13 at 6.41.09 PM.jpeg', 'Evaluación de TM6M')">
+                <img src="images/imagenes app/WhatsApp Image 2026-06-13 at 6.41.09 PM.jpeg" alt="TM6M">
+                <div class="gallery-info">
+                    <h4>Test de Marcha de 6 Minutos</h4>
+                    <p>Ingreso hemodinámico, Borg y deltas de pulso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+        <div id="lightbox-caption" onclick="event.stopPropagation()"></div>
+    </div>
+
+    <!-- Final CTA -->
+    <section id="download" class="final-cta">
+        <h2 class="section-title">Estandariza tu práctica. Eleva la calidad de tus reportes.</h2>
+        <p class="cta-subtitle">Únete a los especialistas que están eliminando las planillas de cálculo y el papeleo manual. Descarga CardioRehab gratis por lanzamiento.</p>
+        
+        <div class="download-container">
+            <a href="https://play.google.com/store/apps/details?id=com.cardiorehab.app" target="_blank" class="playstore-badge">
+                <div class="badge-content">
+                    <i class="ph ph-google-play-logo"></i>
+                    <div class="badge-text">
+                        <span>DISPONIBLE EN</span>
+                        <strong>Google Play</strong>
+                    </div>
+                </div>
+            </a>
+            <p class="download-note"><i class="ph ph-info"></i> Compatible con Android 8.0 o superior (optimizado para tablets y celulares)</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 CardioRehab. Todos los derechos reservados. Diseñado para Kinesiólogos y Especialistas Clínicos.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Política de Privacidad</a>
+                <a href="#">Términos de Uso</a>
+                <a href="mailto:soporte@cardiorehab.cl">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
