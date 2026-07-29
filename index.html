@@ -246,6 +246,65 @@
         </div>
     </section>
 
+    <!-- Interactive Widget: Calculadora Clínica en Vivo -->
+    <section id="live-calculator" class="calculator-section">
+        <span class="section-tagline">DEMOSTRACIÓN INTERACTIVA EN VIVO</span>
+        <h2 class="section-title">Prueba los Algoritmos de Cálculo Normativo en Tiempo Real</h2>
+        <p class="section-subtitle">Ingresa la edad, FC de reposo y estado farmacológico del paciente para calcular instantáneamente las zonas de Karvonen ajustadas y la distancia predicha TM6M (Enright).</p>
+        
+        <div class="calculator-card slide-up">
+            <div class="calculator-grid">
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="calcAge"><i class="ph ph-user"></i> Edad del Paciente: <strong id="valAge">58</strong> años</label>
+                        <input type="range" id="calcAge" min="30" max="90" value="58" class="calc-range">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="calcRestHR"><i class="ph ph-heartbeat"></i> FC Reposo: <strong id="valRestHR">72</strong> bpm</label>
+                        <input type="range" id="calcRestHR" min="40" max="110" value="72" class="calc-range">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="calcHeight"><i class="ph ph-ruler"></i> Estatura: <strong id="valHeight">172</strong> cm</label>
+                        <input type="range" id="calcHeight" min="140" max="200" value="172" class="calc-range">
+                    </div>
+
+                    <div class="toggle-group">
+                        <div class="toggle-label">
+                            <i class="ph ph-pill"></i> <strong>¿En Tratamiento con Betabloqueadores?</strong>
+                            <p>Aplica fórmula de Brawner (FC máx = 164 - 0.7 * edad)</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="calcBB" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="calc-outputs">
+                    <div class="output-box primary-out">
+                        <span class="out-title"><i class="ph ph-activity"></i> FC MÁXIMA ESTIMADA</span>
+                        <span class="out-value" id="outFCMax">123 <small>bpm</small></span>
+                        <span class="out-formula" id="outFormulaTag">Ajustada por Betabloqueadores (Brawner)</span>
+                    </div>
+
+                    <div class="output-box accent-out">
+                        <span class="out-title"><i class="ph ph-gauge"></i> ZONA KARVONEN TARGET (50% - 70%)</span>
+                        <span class="out-value" id="outKarvonen">98 - 108 <small>bpm</small></span>
+                        <span class="out-formula">Rango Prescrito de Ejercicio Seguro</span>
+                    </div>
+
+                    <div class="output-box green-out">
+                        <span class="out-title"><i class="ph ph-person-simple-walk"></i> PREDICHO TM6M (ENRIGHT)</span>
+                        <span class="out-value" id="outTM6M">548 <small>metros</small></span>
+                        <span class="out-formula">100% Capacidad Funcional Esperada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 6. Sección de Módulos Clínicos (Bento Box + Capturas) -->
     <section id="clinical" class="list-section">
         <span class="section-tagline">MÓDULOS DE EVALUACIÓN Y CÁLCULO</span>
@@ -363,6 +422,52 @@
                 </div>
                 <div class="list-action">
                     <span class="module-status">Integrado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interactivo: Estratificación de Riesgo AACVPR -->
+    <section id="risk-quiz" class="quiz-section">
+        <span class="section-tagline">ASISTENTE CLÍNICO DE ESTRATIFICACIÓN</span>
+        <h2 class="section-title">Estratifica el Riesgo Cardiovascular en 3 Clics</h2>
+        <p class="section-subtitle">Prueba la lógica de clasificación recomendada por la AACVPR / AHA para la toma de decisiones sobre telemetría y supervisión durante el ejercicio.</p>
+
+        <div class="quiz-card slide-up">
+            <div class="quiz-questions">
+                <div class="quiz-q-item">
+                    <label><i class="ph ph-heart-break"></i> 1. Fracción de Eyección Ventricular (FEVI %):</label>
+                    <div class="quiz-options" id="quizFEVI">
+                        <button type="button" class="quiz-btn active" data-val="high">&ge; 50%</button>
+                        <button type="button" class="quiz-btn" data-val="mid">40% - 49%</button>
+                        <button type="button" class="quiz-btn" data-val="low">&lt; 40%</button>
+                    </div>
+                </div>
+
+                <div class="quiz-q-item">
+                    <label><i class="ph ph-warning-octagon"></i> 2. Arritmias Complejas en Reposo o Ejercicio:</label>
+                    <div class="quiz-options" id="quizArrhythmia">
+                        <button type="button" class="quiz-btn active" data-val="no">Ausentes</button>
+                        <button type="button" class="quiz-btn" data-val="yes">Presentes</button>
+                    </div>
+                </div>
+
+                <div class="quiz-q-item">
+                    <label><i class="ph ph-lightning"></i> 3. Capacidad Funcional Alcanzada:</label>
+                    <div class="quiz-options" id="quizMETs">
+                        <button type="button" class="quiz-btn active" data-val="good">&ge; 7.0 METs</button>
+                        <button type="button" class="quiz-btn" data-val="poor">&lt; 5.0 METs</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-result-box" id="quizResultBox">
+                <div class="result-badge low-risk" id="resultBadge">
+                    <i class="ph ph-shield-check"></i> RIESGO BAJO AACVPR
+                </div>
+                <p class="result-desc" id="resultDesc">Paciente apto para entrenamiento con supervisión no continua. Bajo riesgo de eventos hemodinámicos severos durante el ejercicio.</p>
+                <div class="result-guideline" id="resultGuideline">
+                    <i class="ph ph-info"></i> <strong>Recomendación EKG:</strong> Monitoreo aleatorio o intermitente según evolución clínica.
                 </div>
             </div>
         </div>
@@ -507,6 +612,9 @@
                     <li><i class="ph ph-check-circle"></i> Totalmente editable en Microsoft Word</li>
                     <li><i class="ph ph-check-circle"></i> Envío directo por WhatsApp / Email</li>
                 </ul>
+                <button type="button" class="btn-preview-docx" onclick="openDocxModal()">
+                    <i class="ph ph-file-doc"></i> Previsualizar Informe Tipo (.docx)
+                </button>
             </div>
 
             <!-- Evaluación Clínica Pro (Inicial vs Final) -->
@@ -778,6 +886,113 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal: Previsualización de Informe DOCX -->
+    <div id="docxModal" class="docx-modal" onclick="closeDocxModal()">
+        <div class="docx-modal-card" onclick="event.stopPropagation()">
+            <div class="docx-header">
+                <div class="docx-title-box">
+                    <i class="ph ph-file-doc docx-icon"></i>
+                    <div>
+                        <h3>INFORME DE EVALUACIÓN CLÍNICA (DOCX)</h3>
+                        <span>Vista Previa del Documento Microsoft Word Editable</span>
+                    </div>
+                </div>
+                <button class="docx-close" onclick="closeDocxModal()">&times;</button>
+            </div>
+            
+            <div class="docx-body">
+                <div class="docx-paper">
+                    <div class="docx-paper-header">
+                        <div class="paper-logo">[LOGO INSTITUCIONAL / CONSULTA]</div>
+                        <div class="paper-meta">
+                            <strong>CENTRO DE REHABILITACIÓN CARDIOVASCULAR</strong>
+                            <p>Informe de Evolución y Capacidad Funcional</p>
+                        </div>
+                    </div>
+                    
+                    <hr class="paper-hr">
+
+                    <div class="docx-section">
+                        <h4>1. DATOS DEL PACIENTE</h4>
+                        <div class="paper-grid-2">
+                            <p><strong>Paciente:</strong> Juan Carlos Mendoza</p>
+                            <p><strong>Edad / Sexo:</strong> 62 años / Masculino</p>
+                            <p><strong>Diagnóstico:</strong> Post-Infarto Agudo Miocardio (IAM)</p>
+                            <p><strong>Fármacos:</strong> Betabloqueadores (Carvedilol 12.5mg), Estatinas</p>
+                        </div>
+                    </div>
+
+                    <div class="docx-section">
+                        <h4>2. PRUEBA DE CAMINATA DE 6 MINUTOS (TM6M)</h4>
+                        <table class="paper-table">
+                            <thead>
+                                <tr>
+                                    <th>Parámetro</th>
+                                    <th>Evaluación Inicial</th>
+                                    <th>Evaluación Final</th>
+                                    <th>Delta / % Predicho</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Distancia Recorrida</td>
+                                    <td>380 metros</td>
+                                    <td>495 metros</td>
+                                    <td class="pos-text">+115m (+30.2%)</td>
+                                </tr>
+                                <tr>
+                                    <td>% Predicho (Enright)</td>
+                                    <td>68.5%</td>
+                                    <td>89.2%</td>
+                                    <td class="pos-text">+20.7% Normalización</td>
+                                </tr>
+                                <tr>
+                                    <td>Respuesta Presora (PA)</td>
+                                    <td>125/80 mmHg</td>
+                                    <td>142/85 mmHg</td>
+                                    <td>Fisiológica Adecuada</td>
+                                </tr>
+                                <tr>
+                                    <td>Escala de Borg (Esfuerzo)</td>
+                                    <td>6 / 10 (Severo)</td>
+                                    <td>3 / 10 (Moderado)</td>
+                                    <td class="pos-text">Mejora Tolerancia</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="docx-section">
+                        <h4>3. ESTRATIFICACIÓN Y PRESCRIPCIÓN DE EJERCICIO</h4>
+                        <div class="paper-callout">
+                            <p><strong>Categoría AACVPR:</strong> Riesgo Moderado (FEVI 48%, sin arritmias ventriculares).</p>
+                            <p><strong>Zona Karvonen (Brawner BB):</strong> FC Objetivo: <strong>96 - 108 bpm</strong> (50% - 70% FC Reserva).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="docx-footer">
+                <span class="docx-note"><i class="ph ph-check-circle"></i> Este formato se genera en 1 clic directamente en tu teléfono.</span>
+                <button type="button" class="btn-docx-action" onclick="closeDocxModal()">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Floating Bar -->
+    <div id="stickyBar" class="sticky-bar">
+        <div class="sticky-content">
+            <div class="sticky-info">
+                <i class="ph ph-heartbeat logo-icon"></i>
+                <span>Cardio<strong>Rehab</strong> Pro</span>
+                <small class="sticky-pill"><i class="ph ph-shield-check"></i> 100% Offline</small>
+            </div>
+            <a href="#download" class="btn-sticky-download">
+                <i class="ph ph-google-play-logo"></i> Descargar en Google Play
+            </a>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
