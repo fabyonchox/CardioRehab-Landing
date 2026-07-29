@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll('.slide-up').forEach(element => {
+        element.classList.add('visible');
         observer.observe(element);
     });
 
