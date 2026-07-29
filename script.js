@@ -230,16 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 stickyBar.classList.remove('visible');
             }
         }
+        }
     });
-
-    // 10. Live ECG BPM Simulation Ticker
-    const liveBpmEl = document.getElementById('liveBpm');
-    if (liveBpmEl) {
-        setInterval(() => {
-            const randomBpm = 70 + Math.floor(Math.random() * 5); // 70 to 74 bpm
-            liveBpmEl.innerText = `${randomBpm} BPM`;
-        }, 3000);
-    }
 });
 
 // 9. DOCX Preview Modal Functions (Global scope)
