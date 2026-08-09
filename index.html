@@ -99,13 +99,17 @@
                         <span class="badge"><i class="ph ph-lock-keyhole"></i> 100% Offline-First</span>
                         <span class="badge"><i class="ph ph-function"></i> Algoritmos Normativos</span>
                         <span class="badge"><i class="ph ph-file-doc"></i> Reportes DOCX Editables</span>
+                        <span class="badge ios-badge"><i class="ph ph-apple-logo"></i> Disponible en Web para iPhone / iPad</span>
                     </div>
                     <div class="hero-ctas">
-                        <a href="#download" class="btn-prisma btn-glow">
-                            Descargar en Google Play <i class="ph ph-arrow-right"></i>
+                        <a href="#lead-capture" class="btn-prisma btn-glow">
+                            Solicitar Demo Gratuita <i class="ph ph-arrow-right"></i>
                         </a>
-                        <a href="#demo" class="btn-secondary-link">
-                            <i class="ph ph-play-circle"></i> Ver demostración en vivo
+                        <a href="#pricing" class="btn-secondary-link">
+                            <i class="ph ph-tag"></i> Ver Planes y Precios
+                        </a>
+                        <a href="https://cardiorehab-web.vercel.app" target="_blank" class="btn-ios-link">
+                            <i class="ph ph-globe"></i> Entrar a Web Suite (iOS / PC)
                         </a>
                     </div>
                 </div>
@@ -1029,7 +1033,118 @@
         </div>
     </section>
 
-    <!-- 12. Sección FAQ con Objeciones Reales -->
+    <!-- 12. Sección de Planes y Monetización B2B -->
+    <section id="pricing" class="pricing-section">
+        <span class="section-tagline">PLANES Y MONETIZACIÓN CLÍNICA</span>
+        <h2 class="section-title">Soluciones Flexibles para Tu Consulta o Centro Médico</h2>
+        <p class="section-subtitle">Potencia la eficiencia de tus evaluaciones y destaca con informes formales automatizados en Word.</p>
+
+        <div class="pricing-grid">
+            <!-- Plan Kinesiólogo Individual -->
+            <div class="pricing-card slide-up">
+                <div class="pricing-header">
+                    <span class="pricing-badge">CONSULTA INDIVIDUAL</span>
+                    <h3>Kinesiólogo Pro</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">$19.990</span>
+                        <span class="price-period">CLP / mes</span>
+                    </div>
+                    <p class="price-sub">o $19 USD / mes para internacionales</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="ph ph-check-circle font-bold"></i> 1 Licencia Profesional Kinesiólogo</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Pacientes e Historiales Ilimitados</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Exportación de Informes Word (.docx) Ilimitados</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Batería Completa (TM6M, STS, Handgrip, DASI, SARC-F, IPAQ)</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Gráficos de Araña MDI & Evolución Pre/Post</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Acceso App Android Offline + Web Suite (iOS / PC)</li>
+                </ul>
+                <a href="#lead-capture" class="btn-pricing primary">
+                    Solicitar Prueba Gratuita 14 Días <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Plan Centro / Clínica (Featured) -->
+            <div class="pricing-card featured slide-up">
+                <div class="featured-tag">MÁS POPULAR EN CENTROS</div>
+                <div class="pricing-header">
+                    <span class="pricing-badge accent">INSTITUCIONAL</span>
+                    <h3>Centro / Clínica RHB</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">$49.990</span>
+                        <span class="price-period">CLP / mes</span>
+                    </div>
+                    <p class="price-sub">o $49 USD / mes para internacionales</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="ph ph-check-circle font-bold"></i> Hasta 5 Licencias de Kinesiólogos/Médicos</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Personalización de Informes con Logo de Tu Clínica</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Exportación Ilimitada en Word (.docx)</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Soporte Técnico Prioritario & Inducción</li>
+                    <li><i class="ph ph-check-circle font-bold"></i> Acceso Multiplataforma (Android, iPhone, PC)</li>
+                </ul>
+                <a href="#lead-capture" class="btn-pricing featured">
+                    Solicitar Demo Institucional <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Formulario de Captura de Leads / Solicitud de Demo -->
+    <section id="lead-capture" class="lead-section">
+        <div class="lead-card slide-up">
+            <div class="lead-content">
+                <span class="section-tagline">SOLICITUD DE DEMOSTRACIÓN & ACCESO</span>
+                <h2 class="section-title">Comienza a Automatizar tus Reportes Clínicos Hoy</h2>
+                <p class="lead-subtitle">Déjanos tus datos y te enviaremos acceso inmediato a la Web Suite (compatible con iPhone/iPad) y la versión demo de la App Android.</p>
+                
+                <form id="leadForm" class="lead-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadName"><i class="ph ph-user"></i> Nombre Completo</label>
+                            <input type="text" id="leadName" placeholder="Ej. Lic. Camila Torres" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadEmail"><i class="ph ph-envelope-simple"></i> Correo Electrónico</label>
+                            <input type="email" id="leadEmail" placeholder="camila@kinesiologia.cl" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadRole"><i class="ph ph-stethoscope"></i> Profesión / Especialidad</label>
+                            <select id="leadRole" required>
+                                <option value="kinesiologo">Kinesiólogo / Fisioterapeuta</option>
+                                <option value="cardiologo">Cardiólogo / Fisiatra</option>
+                                <option value="centro">Centro de Rehabilitación / Clínica</option>
+                                <option value="estudiante">Estudiante / Investigador</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadDevice"><i class="ph ph-device-mobile"></i> Dispositivo Principal</label>
+                            <select id="leadDevice" required>
+                                <option value="iphone">iPhone / iPad (Web Suite)</option>
+                                <option value="android">Teléfono Android (App Móvil)</option>
+                                <option value="ambos">Ambos / Computador</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-prisma btn-glow btn-submit-lead">
+                        <i class="ph ph-paper-plane-tilt"></i> Obtener Demo Gratuita y Acceso Web
+                    </button>
+                </form>
+
+                <div id="leadSuccess" class="lead-success-msg" style="display: none;">
+                    <i class="ph ph-check-circle"></i>
+                    <h4>¡Solicitud Recibida con Éxito!</h4>
+                    <p>Te hemos enviado las credenciales de prueba y el enlace directo a la Web Suite a tu correo electrónico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Sección FAQ con Objeciones Reales -->
     <section id="faq" class="faq-section">
         <span class="section-tagline">RESPUESTAS Y DUDAS FRECUENTES</span>
         <h2 class="section-title">Preguntas Frecuentes de la Práctica Clínica</h2>

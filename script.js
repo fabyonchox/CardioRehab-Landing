@@ -383,6 +383,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 8.1 Lead Form Submission Handler
+    const leadForm = document.getElementById('leadForm');
+    const leadSuccess = document.getElementById('leadSuccess');
+
+    if (leadForm && leadSuccess) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            leadForm.style.display = 'none';
+            leadSuccess.style.display = 'block';
+        });
+    }
+
     // 8. Sticky Bar Scroll Trigger
     const stickyBar = document.getElementById('stickyBar');
     window.addEventListener('scroll', () => {
