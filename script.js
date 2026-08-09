@@ -169,8 +169,170 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heightInput) heightInput.addEventListener('input', calculateLiveMetrics);
     if (bbCheckbox) bbCheckbox.addEventListener('change', calculateLiveMetrics);
 
-    // Initial calculation
+    // Initial calculation for Karvonen
     calculateLiveMetrics();
+
+    // Tab Switching for Live Calculators
+    const calcTabBtns = document.querySelectorAll('.calc-tab-btn');
+    const calcTabContents = document.querySelectorAll('.calc-tab-content');
+
+    calcTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTabId = btn.getAttribute('data-tab');
+
+            calcTabBtns.forEach(b => b.classList.remove('active'));
+            calcTabContents.forEach(c => c.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetContent = document.getElementById(targetTabId);
+            if (targetContent) targetContent.classList.add('active');
+        });
+    });
+
+    // --- 6.2 DASI Calculation Logic ---
+    const dasiCheckboxes = document.querySelectorAll('.dasi-chk');
+    const outDASIScore = document.getElementById('outDASIScore');
+    const outDASIVO2 = document.getElementById('outDASIVO2');
+    const outDASIMETs = document.getElementById('outDASIMETs');
+    const outDASIClass = document.getElementById('outDASIClass');
+
+    function calculateDASI() {
+        let totalDASI = 0;
+        dasiCheckboxes.forEach(chk => {
+            if (chk.checked) {
+                totalDASI += parseFloat(chk.getAttribute('data-weight') || '0');
+            }
+        });
+
+        // VO2 peak (ml/kg/min) = (0.43 * DASI) + 9.6
+        const vo2Peak = (0.43 * totalDASI) + 9.6;
+        const mets = vo2Peak / 3.5;
+
+        if (outDASIScore) outDASIScore.innerHTML = `${totalDASI.toFixed(1)} <small>/ 58.2 pts</small>`;
+        if (outDASIVO2) outDASIVO2.innerHTML = `${vo2Peak.toFixed(1)} <small>ml/kg/min</small>`;
+        if (outDASIMETs) outDASIMETs.innerHTML = `${mets.toFixed(1)} <small>METs</small>`;
+
+        if (outDASIClass) {
+            if (mets < 4.0) {
+                outDASIClass.innerText = "Limitación Severa (Bajo Capacidad Funcional)";
+            } else if (mets <= 7.0) {
+                outDASIClass.innerText = "Capacidad Funcional Moderada (Apto RHB)";
+            } else {
+                outDASIClass.innerText = "Alta Capacidad Funcional (Excelente Pronóstico)";
+            }
+        }
+    }
+
+    dasiCheckboxes.forEach(chk => chk.addEventListener('change', calculateDASI));
+    calculateDASI();
+
+    // --- 6.3 IPAQ Corto Calculation Logic ---
+    const ipaqVigDays = document.getElementById('ipaqVigDays');
+    const ipaqVigMin = document.getElementById('ipaqVigMin');
+    const ipaqModDays = document.getElementById('ipaqModDays');
+    const ipaqModMin = document.getElementById('ipaqModMin');
+    const ipaqWalkDays = document.getElementById('ipaqWalkDays');
+    const ipaqWalkMin = document.getElementById('ipaqWalkMin');
+
+    const valIpaqVigDays = document.getElementById('valIpaqVigDays');
+    const valIpaqVigMin = document.getElementById('valIpaqVigMin');
+    const valIpaqModDays = document.getElementById('valIpaqModDays');
+    const valIpaqModMin = document.getElementById('valIpaqModMin');
+    const valIpaqWalkDays = document.getElementById('valIpaqWalkDays');
+    const valIpaqWalkMin = document.getElementById('valIpaqWalkMin');
+
+    const outIPAQTotal = document.getElementById('outIPAQTotal');
+    const outIPAQLevel = document.getElementById('outIPAQLevel');
+    const outIPAQRec = document.getElementById('outIPAQRec');
+
+    function calculateIPAQ() {
+        if (!ipaqVigDays || !ipaqVigMin || !ipaqModDays || !ipaqModMin || !ipaqWalkDays || !ipaqWalkMin) return;
+
+        const vDays = parseInt(ipaqVigDays.value, 10);
+        const vMin = parseInt(ipaqVigMin.value, 10);
+        const mDays = parseInt(ipaqModDays.value, 10);
+        const mMin = parseInt(ipaqModMin.value, 10);
+        const wDays = parseInt(ipaqWalkDays.value, 10);
+        const wMin = parseInt(ipaqWalkMin.value, 10);
+
+        if (valIpaqVigDays) valIpaqVigDays.innerText = vDays;
+        if (valIpaqVigMin) valIpaqVigMin.innerText = vMin;
+        if (valIpaqModDays) valIpaqModDays.innerText = mDays;
+        if (valIpaqModMin) valIpaqModMin.innerText = mMin;
+        if (valIpaqWalkDays) valIpaqWalkDays.innerText = wDays;
+        if (valIpaqWalkMin) valIpaqWalkMin.innerText = wMin;
+
+        // METs min/week formulas (OMS standard)
+        const vigMETs = 8.0 * vMin * vDays;
+        const modMETs = 4.0 * mMin * mDays;
+        const walkMETs = 3.3 * wMin * wDays;
+        const totalMETs = Math.round(vigMETs + modMETs + walkMETs);
+
+        if (outIPAQTotal) outIPAQTotal.innerHTML = `${totalMETs} <small>MET-min/sem</small>`;
+
+        if (outIPAQLevel && outIPAQRec) {
+            if (totalMETs < 600) {
+                outIPAQLevel.innerText = "BAJO / INACTIVO";
+                outIPAQLevel.style.color = "#ff4d4d";
+                outIPAQRec.innerText = "Priorizar prescripción de hábitos activos y caminata gradual";
+            } else if (totalMETs <= 3000) {
+                outIPAQLevel.innerText = "MODERADO";
+                outIPAQLevel.style.color = "#00e5ff";
+                outIPAQRec.innerText = "Mantener volumen e incrementar intensidad de manera progresiva";
+            } else {
+                outIPAQLevel.innerText = "ALTO / MUY ACTIVO";
+                outIPAQLevel.style.color = "#39ff14";
+                outIPAQRec.innerText = "Nivel óptimo. Mantener supervisión y prevención de sobrecarga";
+            }
+        }
+    }
+
+    [ipaqVigDays, ipaqVigMin, ipaqModDays, ipaqModMin, ipaqWalkDays, ipaqWalkMin].forEach(input => {
+        if (input) input.addEventListener('input', calculateIPAQ);
+    });
+    calculateIPAQ();
+
+    // --- 6.4 SARC-F Calculation Logic ---
+    const sarcfSelects = [
+        document.getElementById('sarcfQ1'),
+        document.getElementById('sarcfQ2'),
+        document.getElementById('sarcfQ3'),
+        document.getElementById('sarcfQ4'),
+        document.getElementById('sarcfQ5')
+    ];
+
+    const outSARCFScore = document.getElementById('outSARCFScore');
+    const outSARCFStatus = document.getElementById('outSARCFStatus');
+    const outSARCFAction = document.getElementById('outSARCFAction');
+    const boxSARCFStatus = document.getElementById('boxSARCFStatus');
+
+    function calculateSARCF() {
+        let totalScore = 0;
+        sarcfSelects.forEach(sel => {
+            if (sel) totalScore += parseInt(sel.value, 10);
+        });
+
+        if (outSARCFScore) outSARCFScore.innerHTML = `${totalScore} <small>/ 10 pts</small>`;
+
+        if (outSARCFStatus && outSARCFAction && boxSARCFStatus) {
+            if (totalScore >= 4) {
+                outSARCFStatus.innerText = "SOSPECHA CLÍNICA DE SARCOPENIA";
+                outSARCFStatus.style.color = "#ff4d4d";
+                outSARCFAction.innerText = "Se recomienda evaluar Dinamometría Palmar (<27kg ♂ / <16kg ♀) y STS 30s";
+                boxSARCFStatus.className = "output-box danger-out";
+            } else {
+                outSARCFStatus.innerText = "SIN SOSPECHA DE SARCOPENIA";
+                outSARCFStatus.style.color = "#39ff14";
+                outSARCFAction.innerText = "Riesgo bajo de pérdida de masa muscular funcional";
+                boxSARCFStatus.className = "output-box green-out";
+            }
+        }
+    }
+
+    sarcfSelects.forEach(sel => {
+        if (sel) sel.addEventListener('change', calculateSARCF);
+    });
+    calculateSARCF();
 
     // 7. AACVPR Risk Stratification Quiz Logic
     let quizState = { fevi: 'high', arrhythmia: 'no', mets: 'good' };
@@ -230,7 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 stickyBar.classList.remove('visible');
             }
-        }
         }
     });
 });

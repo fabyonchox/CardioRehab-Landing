@@ -25,6 +25,28 @@
     
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CardioRehab III",
+      "operatingSystem": "Android",
+      "applicationCategory": "MedicalApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Plataforma clínica móvil para kinesiólogos, fisioterapeutas y cardiólogos. Automatiza reportes en Word, calcula pruebas funcionales (TM6M, STS, Dinamometría, Karvonen, DASI, IPAQ, SARC-F) y genera gráficos de araña MDI."
+    }
+    </script>
 </head>
 <body class="dark-theme">
 
@@ -246,59 +268,276 @@
         </div>
     </section>
 
-    <!-- Interactive Widget: Calculadora Clínica en Vivo -->
+    <!-- Interactive Widget: Suite de Calculadoras Clínicas en Vivo -->
     <section id="live-calculator" class="calculator-section">
         <span class="section-tagline">DEMOSTRACIÓN INTERACTIVA EN VIVO</span>
         <h2 class="section-title">Prueba los Algoritmos de Cálculo Normativo en Tiempo Real</h2>
-        <p class="section-subtitle">Ingresa la edad, FC de reposo y estado farmacológico del paciente para calcular instantáneamente las zonas de Karvonen ajustadas y la distancia predicha TM6M (Enright).</p>
+        <p class="section-subtitle">Explora los módulos de evaluación validados que incluye la app: calcula zonas de Karvonen, predicho TM6M, capacidad funcional DASI, nivel IPAQ y riesgo SARC-F.</p>
+
+        <!-- Selector de Pestañas de Calculadoras -->
+        <div class="calc-tabs-bar slide-up">
+            <button type="button" class="calc-tab-btn active" data-tab="tab-karvonen">
+                <i class="ph ph-heartbeat"></i> Karvonen & TM6M
+            </button>
+            <button type="button" class="calc-tab-btn" data-tab="tab-dasi">
+                <i class="ph ph-activity"></i> Índice DASI
+            </button>
+            <button type="button" class="calc-tab-btn" data-tab="tab-ipaq">
+                <i class="ph ph-person-simple-run"></i> IPAQ Corto
+            </button>
+            <button type="button" class="calc-tab-btn" data-tab="tab-sarcf">
+                <i class="ph ph-barbell"></i> SARC-F Sarcopenia
+            </button>
+        </div>
         
         <div class="calculator-card slide-up">
-            <div class="calculator-grid">
-                <div class="calc-inputs">
-                    <div class="input-group">
-                        <label for="calcAge"><i class="ph ph-user"></i> Edad del Paciente: <strong id="valAge">58</strong> años</label>
-                        <input type="range" id="calcAge" min="30" max="90" value="58" class="calc-range">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="calcRestHR"><i class="ph ph-heartbeat"></i> FC Reposo: <strong id="valRestHR">72</strong> bpm</label>
-                        <input type="range" id="calcRestHR" min="40" max="110" value="72" class="calc-range">
-                    </div>
-
-                    <div class="input-group">
-                        <label for="calcHeight"><i class="ph ph-ruler"></i> Estatura: <strong id="valHeight">172</strong> cm</label>
-                        <input type="range" id="calcHeight" min="140" max="200" value="172" class="calc-range">
-                    </div>
-
-                    <div class="toggle-group">
-                        <div class="toggle-label">
-                            <i class="ph ph-pill"></i> <strong>¿En Tratamiento con Betabloqueadores?</strong>
-                            <p>Aplica fórmula de Brawner (FC máx = 164 - 0.7 * edad)</p>
+            <!-- PESTAÑA 1: KARVONEN Y TM6M -->
+            <div id="tab-karvonen" class="calc-tab-content active">
+                <div class="calculator-grid">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label for="calcAge"><i class="ph ph-user"></i> Edad del Paciente: <strong id="valAge">58</strong> años</label>
+                            <input type="range" id="calcAge" min="30" max="90" value="58" class="calc-range">
                         </div>
-                        <label class="switch">
-                            <input type="checkbox" id="calcBB" checked>
-                            <span class="slider round"></span>
-                        </label>
+                        
+                        <div class="input-group">
+                            <label for="calcRestHR"><i class="ph ph-heartbeat"></i> FC Reposo: <strong id="valRestHR">72</strong> bpm</label>
+                            <input type="range" id="calcRestHR" min="40" max="110" value="72" class="calc-range">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="calcHeight"><i class="ph ph-ruler"></i> Estatura: <strong id="valHeight">172</strong> cm</label>
+                            <input type="range" id="calcHeight" min="140" max="200" value="172" class="calc-range">
+                        </div>
+
+                        <div class="toggle-group">
+                            <div class="toggle-label">
+                                <i class="ph ph-pill"></i> <strong>¿Tratamiento con Betabloqueadores?</strong>
+                                <p>Aplica fórmula de Brawner (FC máx = 164 - 0.7 * edad)</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="calcBB" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="calc-outputs">
+                        <div class="output-box primary-out">
+                            <span class="out-title"><i class="ph ph-activity"></i> FC MÁXIMA ESTIMADA</span>
+                            <span class="out-value" id="outFCMax">123 <small>bpm</small></span>
+                            <span class="out-formula" id="outFormulaTag">Ajustada por Betabloqueadores (Brawner)</span>
+                        </div>
+
+                        <div class="output-box accent-out">
+                            <span class="out-title"><i class="ph ph-gauge"></i> ZONA KARVONEN TARGET (50% - 70%)</span>
+                            <span class="out-value" id="outKarvonen">98 - 108 <small>bpm</small></span>
+                            <span class="out-formula">Rango Prescrito de Ejercicio Seguro</span>
+                        </div>
+
+                        <div class="output-box green-out">
+                            <span class="out-title"><i class="ph ph-person-simple-walk"></i> PREDICHO TM6M (ENRIGHT)</span>
+                            <span class="out-value" id="outTM6M">548 <small>metros</small></span>
+                            <span class="out-formula">100% Capacidad Funcional Esperada</span>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="calc-outputs">
-                    <div class="output-box primary-out">
-                        <span class="out-title"><i class="ph ph-activity"></i> FC MÁXIMA ESTIMADA</span>
-                        <span class="out-value" id="outFCMax">123 <small>bpm</small></span>
-                        <span class="out-formula" id="outFormulaTag">Ajustada por Betabloqueadores (Brawner)</span>
+            <!-- PESTAÑA 2: DASI (Duke Activity Status Index) -->
+            <div id="tab-dasi" class="calc-tab-content">
+                <div class="dasi-grid">
+                    <div class="dasi-checkboxes">
+                        <span class="dasi-instruction"><i class="ph ph-check-square font-bold"></i> Marca las actividades cotidianas que el paciente puede realizar sin dificultad:</span>
+                        <div class="dasi-options-grid">
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="1.75" checked>
+                                <span>1. Cuidar de sí mismo (comer, vestirse, lavarse) [1.75]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="2.75" checked>
+                                <span>2. Caminar por la casa en terreno plano [2.75]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="3.75" checked>
+                                <span>3. Caminar 1-2 cuadras en terreno plano [3.75]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="5.50" checked>
+                                <span>4. Subir un piso de escaleras o colina [5.50]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="8.00">
+                                <span>5. Correr una distancia corta [8.00]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="2.70" checked>
+                                <span>6. Tareas domésticas ligeras (platos, desempolvar) [2.70]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="3.50" checked>
+                                <span>7. Tareas moderadas (pasar aspiradora, barrer) [3.50]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="8.00">
+                                <span>8. Tareas pesadas (fregar pisos, mover muebles) [8.00]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="4.50" checked>
+                                <span>9. Trabajos de jardinería (rastrillar, podar) [4.50]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="5.25" checked>
+                                <span>10. Mantener relaciones sexuales [5.25]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="6.00">
+                                <span>11. Actividades recreativas ligeras (bolos, golf) [6.00]</span>
+                            </label>
+                            <label class="dasi-checkbox-item">
+                                <input type="checkbox" class="dasi-chk" data-weight="7.50">
+                                <span>12. Deportes exigentes (natación, tenis, fútbol) [7.50]</span>
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="output-box accent-out">
-                        <span class="out-title"><i class="ph ph-gauge"></i> ZONA KARVONEN TARGET (50% - 70%)</span>
-                        <span class="out-value" id="outKarvonen">98 - 108 <small>bpm</small></span>
-                        <span class="out-formula">Rango Prescrito de Ejercicio Seguro</span>
+                    <div class="calc-outputs">
+                        <div class="output-box primary-out">
+                            <span class="out-title"><i class="ph ph-calculator"></i> PUNTAJE DASI TOTAL</span>
+                            <span class="out-value" id="outDASIScore">29.7 <small>/ 58.2 pts</small></span>
+                            <span class="out-formula">Suma ponderada funcional de Duke</span>
+                        </div>
+
+                        <div class="output-box accent-out">
+                            <span class="out-title"><i class="ph ph-heartbeat"></i> VO2 PEAK ESTIMADO</span>
+                            <span class="out-value" id="outDASIVO2">22.4 <small>ml/kg/min</small></span>
+                            <span class="out-formula">Fórmula: (0.43 × DASI) + 9.6</span>
+                        </div>
+
+                        <div class="output-box green-out">
+                            <span class="out-title"><i class="ph ph-lightning"></i> CAPACIDAD FUNCIONAL (METs)</span>
+                            <span class="out-value" id="outDASIMETs">6.4 <small>METs</small></span>
+                            <span class="out-formula" id="outDASIClass font-bold">Capacidad Funcional Moderada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 3: IPAQ CORTO -->
+            <div id="tab-ipaq" class="calc-tab-content">
+                <div class="calculator-grid">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label for="ipaqVigDays"><i class="ph ph-fire"></i> Días Actividad Vigorosa: <strong id="valIpaqVigDays">2</strong> días/semana</label>
+                            <input type="range" id="ipaqVigDays" min="0" max="7" value="2" class="calc-range">
+                        </div>
+                        <div class="input-group">
+                            <label for="ipaqVigMin"><i class="ph ph-timer"></i> Minutos por día Vigoroso: <strong id="valIpaqVigMin">30</strong> min</label>
+                            <input type="range" id="ipaqVigMin" min="0" max="120" value="30" step="5" class="calc-range">
+                        </div>
+                        <div class="input-group">
+                            <label for="ipaqModDays"><i class="ph ph-barbell"></i> Días Actividad Moderada: <strong id="valIpaqModDays">3</strong> días/semana</label>
+                            <input type="range" id="ipaqModDays" min="0" max="7" value="3" class="calc-range">
+                        </div>
+                        <div class="input-group">
+                            <label for="ipaqModMin"><i class="ph ph-timer"></i> Minutos por día Moderado: <strong id="valIpaqModMin">30</strong> min</label>
+                            <input type="range" id="ipaqModMin" min="0" max="120" value="30" step="5" class="calc-range">
+                        </div>
+                        <div class="input-group">
+                            <label for="ipaqWalkDays"><i class="ph ph-person-simple-walk"></i> Días de Caminata: <strong id="valIpaqWalkDays">5</strong> días/semana</label>
+                            <input type="range" id="ipaqWalkDays" min="0" max="7" value="5" class="calc-range">
+                        </div>
+                        <div class="input-group">
+                            <label for="ipaqWalkMin"><i class="ph ph-timer"></i> Minutos por día Caminata: <strong id="valIpaqWalkMin">30</strong> min</label>
+                            <input type="range" id="ipaqWalkMin" min="0" max="120" value="30" step="5" class="calc-range">
+                        </div>
                     </div>
 
-                    <div class="output-box green-out">
-                        <span class="out-title"><i class="ph ph-person-simple-walk"></i> PREDICHO TM6M (ENRIGHT)</span>
-                        <span class="out-value" id="outTM6M">548 <small>metros</small></span>
-                        <span class="out-formula">100% Capacidad Funcional Esperada</span>
+                    <div class="calc-outputs">
+                        <div class="output-box primary-out">
+                            <span class="out-title"><i class="ph ph-chart-bar"></i> TOTAL METs-MINUTO / SEMANA</span>
+                            <span class="out-value" id="outIPAQTotal">1335 <small>MET-min/sem</small></span>
+                            <span class="out-formula">8.0 (Vig) + 4.0 (Mod) + 3.3 (Cam)</span>
+                        </div>
+
+                        <div class="output-box accent-out">
+                            <span class="out-title"><i class="ph ph-shield-check"></i> NIVEL DE ACTIVIDAD FÍSICA OMS</span>
+                            <span class="out-value" id="outIPAQLevel">MODERADO</span>
+                            <span class="out-formula">Cumple recomendaciones mínimas de salud</span>
+                        </div>
+
+                        <div class="output-box green-out">
+                            <span class="out-title"><i class="ph ph-info"></i> RECOMENDACIÓN CLÍNICA</span>
+                            <span class="out-value" style="font-size: 1.1rem; font-weight: 600;" id="outIPAQRec">Mantener volumen y progresar intensidad en RHB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 4: SARC-F (Sarcopenia) -->
+            <div id="tab-sarcf" class="calc-tab-content">
+                <div class="sarcf-grid">
+                    <div class="sarcf-questions">
+                        <span class="dasi-instruction"><i class="ph ph-question font-bold"></i> Responde a las 5 preguntas rápidas de tamizaje de Sarcopenia:</span>
+                        
+                        <div class="sarcf-q-item">
+                            <label>1. Fuerza: ¿Cuánta dificultad tiene para levantar y llevar 4.5 kg?</label>
+                            <select id="sarcfQ1" class="sarcf-select">
+                                <option value="0">Ninguna (0 pts)</option>
+                                <option value="1">Alguna (1 pt)</option>
+                                <option value="2">Mucha o Incapaz (2 pts)</option>
+                            </select>
+                        </div>
+
+                        <div class="sarcf-q-item">
+                            <label>2. Asistencia al Caminar: ¿Dificultad para cruzar una habitación?</label>
+                            <select id="sarcfQ2" class="sarcf-select">
+                                <option value="0">Ninguna (0 pts)</option>
+                                <option value="1">Alguna (1 pt)</option>
+                                <option value="2">Mucha / Ayuda / Incapaz (2 pts)</option>
+                            </select>
+                        </div>
+
+                        <div class="sarcf-q-item">
+                            <label>3. Levantarse de una Silla: ¿Dificultad para levantarse de una silla/cama?</label>
+                            <select id="sarcfQ3" class="sarcf-select">
+                                <option value="0">Ninguna (0 pts)</option>
+                                <option value="1">Alguna (1 pt)</option>
+                                <option value="2">Mucha o Incapaz sin ayuda (2 pts)</option>
+                            </select>
+                        </div>
+
+                        <div class="sarcf-q-item">
+                            <label>4. Subir Escaleras: ¿Dificultad para subir 10 escalones?</label>
+                            <select id="sarcfQ4" class="sarcf-select">
+                                <option value="0">Ninguna (0 pts)</option>
+                                <option value="1">Alguna (1 pt)</option>
+                                <option value="2">Mucha o Incapaz (2 pts)</option>
+                            </select>
+                        </div>
+
+                        <div class="sarcf-q-item">
+                            <label>5. Caídas: ¿Cuántas veces ha caído en el último año?</label>
+                            <select id="sarcfQ5" class="sarcf-select">
+                                <option value="0">Ninguna caída (0 pts)</option>
+                                <option value="1">1 a 3 caídas (1 pt)</option>
+                                <option value="2">4 o más caídas (2 pts)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="calc-outputs">
+                        <div class="output-box primary-out">
+                            <span class="out-title"><i class="ph ph-gauge"></i> PUNTAJE SARC-F</span>
+                            <span class="out-value" id="outSARCFScore">0 <small>/ 10 pts</small></span>
+                            <span class="out-formula">Corte de Sospecha: ≥ 4 puntos</span>
+                        </div>
+
+                        <div class="output-box green-out" id="boxSARCFStatus">
+                            <span class="out-title"><i class="ph ph-shield-check"></i> DIAGNÓSTICO SARC-F</span>
+                            <span class="out-value" id="outSARCFStatus" style="font-size: 1.3rem;">SIN SOSPECHA DE SARCOPENIA</span>
+                            <span class="out-formula" id="outSARCFAction">Riesgo bajo de pérdida de masa muscular funcional</span>
+                        </div>
                     </div>
                 </div>
             </div>
