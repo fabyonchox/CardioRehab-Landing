@@ -1098,34 +1098,39 @@
                 <h2 class="section-title">Comienza a Automatizar tus Reportes Clínicos Hoy</h2>
                 <p class="lead-subtitle">Déjanos tus datos y te enviaremos acceso inmediato a la Web Suite (compatible con iPhone/iPad) y la versión demo de la App Android.</p>
                 
-                <form id="leadForm" class="lead-form">
+                <form id="leadForm" class="lead-form" action="https://formsubmit.co/cardiorehab.cl@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="🚀 Nueva Solicitud de Demo Pro - CardioRehab">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="leadName"><i class="ph ph-user"></i> Nombre Completo</label>
-                            <input type="text" id="leadName" placeholder="Ej. Lic. Camila Torres" required>
+                            <input type="text" id="leadName" name="Nombre" placeholder="Ej. Lic. Camila Torres" required>
                         </div>
                         <div class="form-group">
                             <label for="leadEmail"><i class="ph ph-envelope-simple"></i> Correo Electrónico</label>
-                            <input type="email" id="leadEmail" placeholder="camila@kinesiologia.cl" required>
+                            <input type="email" id="leadEmail" name="Email" placeholder="camila@kinesiologia.cl" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="leadRole"><i class="ph ph-stethoscope"></i> Profesión / Especialidad</label>
-                            <select id="leadRole" required>
-                                <option value="kinesiologo">Kinesiólogo / Fisioterapeuta</option>
-                                <option value="cardiologo">Cardiólogo / Fisiatra</option>
-                                <option value="centro">Centro de Rehabilitación / Clínica</option>
-                                <option value="estudiante">Estudiante / Investigador</option>
+                            <select id="leadRole" name="Especialidad" required>
+                                <option value="Kinesiólogo / Fisioterapeuta">Kinesiólogo / Fisioterapeuta</option>
+                                <option value="Cardiólogo / Fisiatra">Cardiólogo / Fisiatra</option>
+                                <option value="Centro de Rehabilitación / Clínica">Centro de Rehabilitación / Clínica</option>
+                                <option value="Estudiante / Investigador">Estudiante / Investigador</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="leadDevice"><i class="ph ph-device-mobile"></i> Dispositivo Principal</label>
-                            <select id="leadDevice" required>
-                                <option value="iphone">iPhone / iPad (Web Suite)</option>
-                                <option value="android">Teléfono Android (App Móvil)</option>
-                                <option value="ambos">Ambos / Computador</option>
+                            <select id="leadDevice" name="Dispositivo" required>
+                                <option value="iPhone / iPad (Web Suite)">iPhone / iPad (Web Suite)</option>
+                                <option value="Teléfono Android (App Móvil)">Teléfono Android (App Móvil)</option>
+                                <option value="Ambos / Computador">Ambos / Computador</option>
                             </select>
                         </div>
                     </div>

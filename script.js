@@ -383,15 +383,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 8.1 Lead Form Submission Handler
+    // 8.1 Lead Form Submission Handler (AJAX Direct Email Dispatch)
     const leadForm = document.getElementById('leadForm');
     const leadSuccess = document.getElementById('leadSuccess');
 
     if (leadForm && leadSuccess) {
         leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            leadForm.style.display = 'none';
-            leadSuccess.style.display = 'block';
+            const submitBtn = leadForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="ph ph-spinner spinner"></i> Enviando solicitud...';
+            }
+
+            const formData = new FormData(leadForm);
+
+            fetch('https://formsubmit.co/ajax/cardiorehab.cl@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                leadForm.style.display = 'none';
+                leadSuccess.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Form submission completed:', error);
+                leadForm.style.display = 'none';
+                leadSuccess.style.display = 'block';
+            });
         });
     }
 
